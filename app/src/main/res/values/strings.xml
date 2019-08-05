@@ -3,4 +3,7 @@
     <string name="email">Email:</string>
     <string name="password">Senha:</string>
     <string name="login">Login</string>
+    <string name="survey_name">Nome:</string>
+    <string name="survey_desc">Descrição:</string>
+    <string name="survey_questions">Questões:</string>
 </resources>

@@ -10,6 +10,7 @@ import br.com.wab.equest_app_mvvm.R
 import br.com.wab.equest_app_mvvm.adapter.SurveyListAdapter
 import br.com.wab.equest_app_mvvm.databinding.ActivityDashBoardBinding
 import br.com.wab.equest_app_mvvm.viewmodel.DashBoardViewModel
+import org.jetbrains.anko.startActivity
 
 class DashBoardActivity : BaseActivity() {
     lateinit var viewModel: DashBoardViewModel
@@ -22,7 +23,7 @@ class DashBoardActivity : BaseActivity() {
         binding.viewModel = viewModel
 
         viewModel.surveyListLiveData.observe(this, Observer {
-            binding.templateRecyclerView.adapter?.notifyDataSetChanged()
+            binding.surveyRecyclerView.adapter?.notifyDataSetChanged()
         })
 
         viewModel.getAllTemplates()
@@ -41,10 +42,14 @@ class DashBoardActivity : BaseActivity() {
             }
         }
 
-        binding.templateRecyclerView.apply {
+        binding.surveyRecyclerView.apply {
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(this@DashBoardActivity)
             this.adapter = SurveyListAdapter(viewModel.surveyListLiveData.value!!,callback)
+        }
+
+        binding.fabNewSurvey.setOnClickListener {
+            startActivity<SurveyActivity>()
         }
 
     }

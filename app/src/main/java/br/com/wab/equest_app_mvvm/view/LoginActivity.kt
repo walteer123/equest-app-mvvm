@@ -35,7 +35,6 @@ class LoginActivity : BaseActivity() {
             Observer<String> { token ->
                 hideProgress()
                 Preferences.putString(this, "ACCESS_TOKEN", token)
-                val teste = Preferences.getString(this,"ACCESS_TOKEN","")
             })
 
         binding.auth.setOnClickListener {
