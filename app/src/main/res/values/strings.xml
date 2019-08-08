@@ -6,4 +6,7 @@
     <string name="survey_name">Nome:</string>
     <string name="survey_desc">Descrição:</string>
     <string name="survey_questions">Questões:</string>
+    <string name="save">Salvar</string>
+    <string name="create">Criar</string>
+    <string name="ok">OK</string>
 </resources>
