@@ -9,6 +9,10 @@ import br.com.wab.equest_app_mvvm.BaseActivity
 import br.com.wab.equest_app_mvvm.R
 import br.com.wab.equest_app_mvvm.adapter.SurveyListAdapter
 import br.com.wab.equest_app_mvvm.databinding.ActivityDashBoardBinding
+import br.com.wab.equest_app_mvvm.model.Answer
+import br.com.wab.equest_app_mvvm.model.Question
+import br.com.wab.equest_app_mvvm.model.Survey
+import br.com.wab.equest_app_mvvm.util.add
 import br.com.wab.equest_app_mvvm.viewmodel.DashBoardViewModel
 import org.jetbrains.anko.startActivity
 
@@ -18,12 +22,15 @@ class DashBoardActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         viewModel = ViewModelProviders.of(this).get(DashBoardViewModel::class.java)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_dash_board)
         binding.viewModel = viewModel
 
         viewModel.surveyListLiveData.observe(this, Observer {
-            binding.surveyRecyclerView.adapter?.notifyDataSetChanged()
+            val adapter = binding.surveyRecyclerView.adapter as SurveyListAdapter
+            adapter.updateList(it)
         })
 
         viewModel.getAllTemplates()
@@ -50,6 +57,11 @@ class DashBoardActivity : BaseActivity() {
 
         binding.fabNewSurvey.setOnClickListener {
             startActivity<SurveyActivity>()
+        }
+
+        binding.mockSuvey.setOnClickListener {
+           viewModel.surveyListLiveData.add(Survey(name ="mock",answers = emptyList<Answer>().toMutableList(),
+               description = "Mock desc",questions = emptyList<Question>().toMutableList()))
         }
 
     }

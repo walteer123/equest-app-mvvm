@@ -1,5 +1,6 @@
 package br.com.wab.equest_app_mvvm.model.repository.config
 
+import br.com.wab.equest_app_mvvm.model.repository.QuestionRepository
 import br.com.wab.equest_app_mvvm.model.repository.SurveyRepository
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -21,5 +22,7 @@ object Connection {
 
 
     val surveyRepository: SurveyRepository? = retrofit.create(SurveyRepository::class.java)
+
+    val questionRepository: QuestionRepository? = retrofit.create(QuestionRepository::class.java)
 
 }

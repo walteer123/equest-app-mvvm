@@ -26,5 +26,13 @@
                 android:src="@drawable/ic_add"
                 android:layout_margin="16dp"
         />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/mock_suvey"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|left"
+                android:src="@drawable/ic_add"
+                android:layout_margin="16dp"
+        />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -4,10 +4,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import br.com.wab.equest_app_mvvm.R
+import br.com.wab.equest_app_mvvm.model.Answer
+import br.com.wab.equest_app_mvvm.model.Question
 import br.com.wab.equest_app_mvvm.model.Survey
 import br.com.wab.equest_app_mvvm.model.Template
+import br.com.wab.equest_app_mvvm.util.SurveyListDiffUtil
 import kotlinx.android.synthetic.main.item_template_list.view.*
 
 
@@ -51,6 +55,17 @@ class SurveyListAdapter(private val items: MutableList<Survey>, private val call
 
     override fun getItemCount(): Int {
         return items.size
+    }
+
+    fun updateList(list: MutableList<Survey>){
+        val teste = ArrayList<Survey>()
+        teste.addAll(list)
+        teste.add(
+            Survey(name ="mock",answers = emptyList<Answer>().toMutableList(),
+                description = "Mock desc",questions = emptyList<Question>().toMutableList())
+        )
+        val diffResult = DiffUtil.calculateDiff( SurveyListDiffUtil(this.items, teste))
+        diffResult.dispatchUpdatesTo(this)
     }
 
     interface Callback{

@@ -9,4 +9,9 @@
     <string name="save">Salvar</string>
     <string name="create">Criar</string>
     <string name="ok">OK</string>
+    <string name="required">Obrigatório</string>
+    <string name="question_title">Título da questão:</string>
+    <string name="question_type">Tipo da questão:</string>
+    <string name="question_required">É obrigatória?</string>
+    <string name="question_options">Opções:</string>
 </resources>

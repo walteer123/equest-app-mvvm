@@ -7,11 +7,11 @@ class Question(var title: String, var type : QuestionType?, var required: Boolea
     var options: MutableList<String> = ArrayList()
 }
 
-enum class QuestionType{
-    TEXT,
-    TEXTAREA,
-    NUMBER,
-    SELECT,
-    CHECKBOX,
-    RADIO
+enum class QuestionType(val value: String){
+    TEXT("Texto"),
+    TEXTAREA( "Área de texto" ),
+    NUMBER("Numérico"),
+    SELECT("Caixa de seleção"),
+    CHECKBOX("Caixa de marcação"),
+    RADIO("Botão de opção")
 }
